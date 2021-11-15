@@ -17,7 +17,7 @@ public class ReversedArray {
         System.out.println("----------Sub Array----------");
         System.out.println("Please. enter index: ");
         int index = inputNumber();
-        System.out.println("Please. enter size of new array: ");
+        System.out.println("Please, enter size of new array: ");
         int count = inputNumber();
         int[] subArray = subArray(array, index, count );
 
@@ -28,39 +28,20 @@ public class ReversedArray {
     public static int []  subArray(int [] array, int index, int count) {
 
         int [] resultArray;
-        int counter = index + count;
+        //int counter = index + count;
         resultArray = new int[count];
+        int available_elements = array.length - index;
 
-        if (counter < array.length) {
-            for (int i = index; i < counter; i++) {
-                for (int j = 0; j < count; j++) {
-                    resultArray[j] = array[i];
-                }
-                System.out.println(array[i]);
-            }
-        } else {
-            for (int i = index; i < array.length - index; i++) {
-                for (int j = 0; j < count; j++) {
-                    resultArray[j] = array[i];
-                    for (int k = array.length - 1; k < count; k++) {
-                        resultArray[k] = 1;
-                    }
-                }
-                System.out.println(array[i]);
+        for (int i=0; i<resultArray.length; i++) {
+            if (i <= available_elements - 1) {
+                resultArray[i] = array[i+index];
+            } else {
+                resultArray[i] = 1;
             }
 
-
+            System.out.println(resultArray[i]);
         }
 
-/*
-        for (int i = index; i < counter; i++) {
-            for (int j = 0; j < count; j++) {
-                    resultArray[j] = array[i];
-            }
-            System.out.println(array[i]);
-
-        }
-*/
         return resultArray;
 
     }
